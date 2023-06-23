@@ -2,14 +2,14 @@
 <html>
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYQP89KDBQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYQP89KDBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-DYQP89KDBQ');
-</script>
+    gtag('config', 'G-DYQP89KDBQ');
+  </script>
   <title>Juego Primo De Caleb</title>
   <style>
     body {
@@ -60,7 +60,7 @@
     <button onclick="checkAnswer(true)">Primo</button>
     <button onclick="checkAnswer(false)">No Es Primo</button>
   </div>
-  <button id="restart" onclick="restartGame()" style="display: none;">Empezard De Nuevo</button>
+  <button id="restart" onclick="restartGame()" style="display: none;">Empezar De Nuevo</button>
 
   <script>
     var score = 0;
@@ -124,16 +124,3 @@
       }
 
       updateScore();
-      document.getElementById("result").textContent = result;
-      document.getElementById("buttons").style.display = "none";
-
-      if (consecutiveCorrectAnswers >= winningScore) {
-        document.getElementById("restart").style.display = "block";
-      }
-    }
-
-    // Start the game when the page loads
-    window.onload = startGame;
-  </script>
-</body>
-</html>
