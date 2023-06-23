@@ -66,19 +66,20 @@
   <script>
     var score = 0;
 
-    function generateEquation() {
-      var num1 = Math.floor(Math.random() * 11);
-      var num2 = Math.floor(Math.random() * 11);
-      var operator = Math.random() < 0.5 ? '+' : '-';
-      var equationText = num1 + ' ' + operator + ' ' + num2 + ' =';
-      var result = operator === '+' ? num1 + num2 : num1 - num2;
+function generateEquation() {
+  var num1 = Math.floor(Math.random() * 11);
+  var num2 = Math.floor(Math.random() * 11);
+  var operator = '+';
+  var equationText = num1 + ' ' + operator + ' ' + num2 + ' =';
+  var result = num1 + num2;
 
-      document.getElementById('equation').textContent = equationText;
-      document.getElementById('answer').value = '';
-      document.getElementById('result').textContent = '';
+  document.getElementById('equation').textContent = equationText;
+  document.getElementById('answer').value = '';
+  document.getElementById('result').textContent = '';
 
-      return result;
-    }
+  return result;
+}
+
 
     function updateScore() {
       document.getElementById('scoreValue').textContent = score;
