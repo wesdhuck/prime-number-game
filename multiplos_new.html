@@ -54,7 +54,7 @@
   </style>
 </head>
 <body>
-  <h1>Juego multiplos</h1>
+  <h1>Juego Multiplos de Caleb</h1>
   <div id="score">Score: <span id="scoreValue">0</span></div>
   <div id="question"></div>
   <div id="answer-buttons">
@@ -112,4 +112,20 @@
     function checkAnswer(button) {
       var selectedAnswer = parseInt(button.textContent);
       var resultText = '';
+
+      if (selectedAnswer === correctAnswer) {
+        score++;
+        resultText = 'Correct!';
+      } else {
+        resultText = 'Incorrect!';
+      }
+
+      document.getElementById('result').textContent = resultText;
+      document.getElementById('scoreValue').textContent = score;
+      generateQuestion();
     }
+
+    generateQuestion();
+  </script>
+</body>
+</html>
