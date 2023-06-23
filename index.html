@@ -10,7 +10,7 @@
 
   gtag('config', 'G-DYQP89KDBQ');
 </script>
-  <title>Juego primo de caleb</title>
+  <title>Juego Primo De Caleb</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -45,21 +45,27 @@
       padding: 10px 20px;
       margin: 0 10px;
     }
+
+    #restart {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <h1>Juego primo de caleb</h1>
+  <h1>Juego Primo De Caleb</h1>
   <div id="score">Score: <span id="scoreValue">0</span></div>
   <div id="result"></div>
   <div id="number"></div>
   <div id="buttons">
-    <button onclick="checkAnswer(true)">primo</button>
-    <button onclick="checkAnswer(false)">no es primo</button>
+    <button onclick="checkAnswer(true)">Primo</button>
+    <button onclick="checkAnswer(false)">No Es Primo</button>
   </div>
+  <button id="restart" onclick="restartGame()" style="display: none;">Empezard De Nuevo</button>
 
   <script>
     var score = 0;
     var consecutiveCorrectAnswers = 0;
+    var winningScore = 10;
 
     function generateRandomNumber() {
       return Math.floor(Math.random() * 100) + 1;
@@ -89,8 +95,22 @@
       return randomNumber;
     }
 
+    function startGame() {
+      consecutiveCorrectAnswers = 0;
+      score = 0;
+      updateScore();
+      updateNumber();
+      document.getElementById("result").textContent = "";
+      document.getElementById("buttons").style.display = "block";
+      document.getElementById("restart").style.display = "none";
+    }
+
+    function restartGame() {
+      startGame();
+    }
+
     function checkAnswer(guess) {
-      var number = updateNumber();
+      var number = parseInt(document.getElementById("number").textContent);
       var isNumberPrime = isPrime(number);
       var result = "";
 
@@ -105,7 +125,15 @@
 
       updateScore();
       document.getElementById("result").textContent = result;
+      document.getElementById("buttons").style.display = "none";
+
+      if (consecutiveCorrectAnswers >= winningScore) {
+        document.getElementById("restart").style.display = "block";
+      }
     }
+
+    // Start the game when the page loads
+    window.onload = startGame;
   </script>
 </body>
 </html>
