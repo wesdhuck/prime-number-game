@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYQP89KDBQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DYQP89KDBQ');
+</script>
+  <title>Math Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    #score {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    #equation {
+      font-size: 48px;
+      margin-top: 40px;
+    }
+
+    #answer {
+      font-size: 24px;
+      margin-top: 20px;
+      padding: 10px;
+    }
+
+    #result {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    #submit-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Math Game</h1>
+  <div id="score">Score: <span id="scoreValue">0</span></div>
+  <div id="equation"></div>
+  <input type="number" id="answer" placeholder="Enter your answer">
+  <div id="result"></div>
+  <button id="submit-button" onclick="checkAnswer()">Submit</button>
+
+  <script>
+    var score = 0;
+
+    function generateEquation() {
+      var num1 = Math.floor(Math.random() * 11);
+      var num2 = Math.floor(Math.random() * 11);
+      var operator = Math.random() < 0.5 ? '+' : '-';
+      var equationText = num1 + ' ' + operator + ' ' + num2 + ' =';
+      var result = operator === '+' ? num1 + num2 : num1 - num2;
+
+      document.getElementById('equation').textContent = equationText;
+      document.getElementById('answer').value = '';
+      document.getElementById('result').textContent = '';
+
+      return result;
+    }
+
+    function updateScore() {
+      document.getElementById('scoreValue').textContent = score;
+    }
+
+    function checkAnswer() {
+      var userAnswer = parseInt(document.getElementById('answer').value);
+      var correctAnswer = generateEquation();
+
+      if (userAnswer === correctAnswer) {
+        score++;
+        document.getElementById('result').textContent = 'Correct!';
+      } else {
+        document.getElementById('result').textContent = 'Wrong!';
+      }
+
+      updateScore();
+    }
+
+    generateEquation();
+  </script>
+</body>
+</html>
