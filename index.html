@@ -22,6 +22,11 @@
       margin-top: 10px;
     }
 
+    #number {
+      font-size: 48px;
+      margin-top: 40px;
+    }
+
     #buttons {
       margin-top: 30px;
     }
@@ -37,6 +42,7 @@
   <h1>Prime Number Game</h1>
   <div id="score">Score: <span id="scoreValue">0</span></div>
   <div id="result"></div>
+  <div id="number"></div>
   <div id="buttons">
     <button onclick="checkAnswer(true)">Prime</button>
     <button onclick="checkAnswer(false)">Not Prime</button>
@@ -64,21 +70,31 @@
       return true;
     }
 
-    function checkAnswer(guess) {
+    function updateScore() {
+      document.getElementById("scoreValue").textContent = score;
+    }
+
+    function updateNumber() {
       var randomNumber = generateRandomNumber();
-      var isNumberPrime = isPrime(randomNumber);
+      document.getElementById("number").textContent = randomNumber;
+      return randomNumber;
+    }
+
+    function checkAnswer(guess) {
+      var number = updateNumber();
+      var isNumberPrime = isPrime(number);
       var result = "";
 
       if (isNumberPrime === guess) {
         result = "Correct!";
         consecutiveCorrectAnswers++;
-        score += consecutiveCorrectAnswers;
+        score = consecutiveCorrectAnswers;
       } else {
         result = "Wrong!";
         consecutiveCorrectAnswers = 0;
       }
 
-      document.getElementById("scoreValue").textContent = score;
+      updateScore();
       document.getElementById("result").textContent = result;
     }
   </script>
