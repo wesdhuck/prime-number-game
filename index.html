@@ -2,14 +2,14 @@
 <html>
 <head>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYQP89KDBQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DYQP89KDBQ');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYQP89KDBQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-DYQP89KDBQ');
+  </script>
   <title>Juego Primo De Caleb</title>
   <style>
     body {
@@ -90,22 +90,27 @@
     }
 
     function checkAnswer(guess) {
-      var number = updateNumber();
-      var isNumberPrime = isPrime(number);
-      var result = "";
+  var number = updateNumber();
+  var isNumberPrime = isPrime(number);
+  var result = "";
 
-      if (isNumberPrime === guess) {
-        result = "Correct!";
-        consecutiveCorrectAnswers++;
-        score = consecutiveCorrectAnswers;
-      } else {
-        result = "Wrong!";
-        consecutiveCorrectAnswers = 0;
-      }
-
-      updateScore();
-      document.getElementById("result").textContent = result;
+  if (isNumberPrime === guess) {
+    result = "Correct!";
+    consecutiveCorrectAnswers++;
+    score = consecutiveCorrectAnswers;
+    
+    if (consecutiveCorrectAnswers === 2) {
+      // Redirect to the winning page
+      window.location.href = "winning_page.html";
     }
+  } else {
+    result = "Wrong!";
+    consecutiveCorrectAnswers = 0;
+  }
+
+  updateScore();
+  document.getElementById("result").textContent = result;
+}
   </script>
 </body>
 </html>
