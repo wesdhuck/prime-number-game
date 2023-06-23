@@ -10,7 +10,7 @@
 
   gtag('config', 'G-DYQP89KDBQ');
 </script>
-  <title>Juego De Caleb</title>
+  <title>Juego Primo De Caleb</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -89,16 +89,8 @@
       return randomNumber;
     }
 
-    function startGame() {
-      consecutiveCorrectAnswers = 0;
-      updateScore();
-      updateNumber();
-      document.getElementById("result").textContent = "";
-      document.getElementById("buttons").style.display = "block";
-    }
-
     function checkAnswer(guess) {
-      var number = parseInt(document.getElementById("number").textContent);
+      var number = updateNumber();
       var isNumberPrime = isPrime(number);
       var result = "";
 
@@ -113,11 +105,7 @@
 
       updateScore();
       document.getElementById("result").textContent = result;
-      document.getElementById("buttons").style.display = "none";
     }
-
-    // Start the game when the page loads
-    window.onload = startGame;
   </script>
 </body>
 </html>
