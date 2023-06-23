@@ -49,6 +49,7 @@
 </head>
 <body>
   <h1>Juego Primo De Caleb</h1>
+  <h2>Llega a 5 para ganar!</h2>
   <div id="score">Score: <span id="scoreValue">0</span></div>
   <div id="result"></div>
   <div id="number"></div>
@@ -99,7 +100,7 @@
     consecutiveCorrectAnswers++;
     score = consecutiveCorrectAnswers;
     
-    if (consecutiveCorrectAnswers === 2) {
+    if (consecutiveCorrectAnswers === 5) {
       // Redirect to the winning page
       window.location.href = "winning_page.html";
     }
