@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYQP89KDBQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DYQP89KDBQ');
+</script>
+  <title>Juego Multiplos de Caleb</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      margin-top: 30px;
+    }
+
+    #score {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    #question {
+      font-size: 48px;
+      margin-top: 40px;
+    }
+
+    #answer-buttons {
+      margin-top: 30px;
+    }
+
+    .answer-button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #result {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Juego multiplos</h1>
+  <div id="score">Score: <span id="scoreValue">0</span></div>
+  <div id="question"></div>
+  <div id="answer-buttons">
+    <button class="answer-button" onclick="checkAnswer(this)"></button>
+    <button class="answer-button" onclick="checkAnswer(this)"></button>
+    <button class="answer-button" onclick="checkAnswer(this)"></button>
+    <button class="answer-button" onclick="checkAnswer(this)"></button>
+  </div>
+  <div id="result"></div>
+
+  <script>
+    var score = 0;
+    var num1, num2, correctAnswer;
+
+    function generateQuestion() {
+      num1 = Math.floor(Math.random() * 5) + 1;
+      num2 = Math.floor(Math.random() * 5) + 1;
+      correctAnswer = num1 * num2;
+      var questionText = num1 + ' × ' + num2 + ' =';
+
+      document.getElementById('question').textContent = questionText;
+      document.getElementById('result').textContent = '';
+
+      var answerButtons = document.getElementsByClassName('answer-button');
+      var answers = generateAnswerOptions();
+      for (var i = 0; i < answerButtons.length; i++) {
+        answerButtons[i].textContent = answers[i];
+      }
+    }
+
+    function generateAnswerOptions() {
+      var answers = [];
+      answers.push(correctAnswer);
+
+      while (answers.length < 4) {
+        var incorrectAnswer = Math.floor(Math.random() * 25) + 1;
+        if (answers.indexOf(incorrectAnswer) === -1 && incorrectAnswer !== correctAnswer) {
+          answers.push(incorrectAnswer);
+        }
+      }
+
+      shuffleArray(answers);
+      return answers;
+    }
+
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+    }
+
+    function checkAnswer(button) {
+      var selectedAnswer = parseInt(button.textContent);
+      var resultText = '';
+    }
