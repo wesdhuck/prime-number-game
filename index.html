@@ -45,10 +45,6 @@
       padding: 10px 20px;
       margin: 0 10px;
     }
-
-    #restart {
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
@@ -60,12 +56,10 @@
     <button onclick="checkAnswer(true)">Primo</button>
     <button onclick="checkAnswer(false)">No Es Primo</button>
   </div>
-  <button id="restart" onclick="restartGame()" style="display: none;">Empezar De Nuevo</button>
 
   <script>
     var score = 0;
     var consecutiveCorrectAnswers = 0;
-    var winningScore = 10;
 
     function generateRandomNumber() {
       return Math.floor(Math.random() * 100) + 1;
@@ -97,16 +91,10 @@
 
     function startGame() {
       consecutiveCorrectAnswers = 0;
-      score = 0;
       updateScore();
       updateNumber();
       document.getElementById("result").textContent = "";
       document.getElementById("buttons").style.display = "block";
-      document.getElementById("restart").style.display = "none";
-    }
-
-    function restartGame() {
-      startGame();
     }
 
     function checkAnswer(guess) {
@@ -124,3 +112,12 @@
       }
 
       updateScore();
+      document.getElementById("result").textContent = result;
+      document.getElementById("buttons").style.display = "none";
+    }
+
+    // Start the game when the page loads
+    window.onload = startGame;
+  </script>
+</body>
+</html>
